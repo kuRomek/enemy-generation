@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour
     private void Awake()
     {
         _isWalking = true;
-        _animator.SetBool("isWalking", true);
+        _animator.SetBool(UnitAnimatorData.Params.IsWalking, true);
     }
 
     private void Update()
@@ -34,7 +34,7 @@ public class Unit : MonoBehaviour
         WaitForSeconds dyingSeconds = new WaitForSeconds(_dyingSeconds);
         
         _isWalking = false;
-        _animator.SetTrigger("die");
+        _animator.SetTrigger(UnitAnimatorData.Params.Die);
 
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Collider>().enabled = false;
