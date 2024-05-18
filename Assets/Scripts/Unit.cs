@@ -20,7 +20,7 @@ public class Unit : MonoBehaviour
     private void Update()
     {
         if (_isWalking)
-            transform.Translate(_speed * Time.deltaTime * Vector3.forward);
+            transform.Translate(_speed * Time.deltaTime * transform.forward, Space.World);
     }
 
     private void OnCollisionEnter(Collision collision)
