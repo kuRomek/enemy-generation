@@ -4,8 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Unit[] _units;
+    [SerializeField] private Unit _unit;
     [SerializeField] private float _secondsToSpawn;
+    [SerializeField] private Target _target;
 
     private Collider _collider;
 
@@ -34,9 +35,8 @@ public class Spawner : MonoBehaviour
         float randomXValue = Random.Range(_collider.bounds.min.x, _collider.bounds.max.x);
         float randomZValue = Random.Range(_collider.bounds.min.z, _collider.bounds.max.z);
 
-        Unit unitToSpawn = Instantiate(_units[Random.Range(0, _units.Length)], new Vector3(randomXValue, transform.position.y, randomZValue), Quaternion.identity);
-
-        float randomAngle = Random.Range(0, 2f * Mathf.PI);
-        unitToSpawn.transform.forward = new Vector3(Mathf.Cos(randomAngle), transform.position.y, Mathf.Sin(randomAngle));
+        Unit unitToSpawn = Instantiate(_unit, new Vector3(randomXValue, transform.position.y, randomZValue), Quaternion.identity);
+        
+        unitToSpawn.SetTarget(_target);
     }
 }

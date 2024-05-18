@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &115255012270115007
 BoxCollider:
@@ -66,7 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d5da654a56f4c488747e4fd7cad1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _units:
-  - {fileID: 3987964055603453383, guid: 3c91c8ad6175fae43b7a46119cd917a6, type: 3}
-  - {fileID: 3390432805495941496, guid: a02ffb846fd22d54f9f0d81738e05165, type: 3}
+  _unit: {fileID: 3390432805495941496, guid: a02ffb846fd22d54f9f0d81738e05165, type: 3}
   _secondsToSpawn: 2
+  _target: {fileID: 0}

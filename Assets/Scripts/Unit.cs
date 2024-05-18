@@ -7,6 +7,7 @@ public class Unit : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private float _speed;
+    [SerializeField] private Target _target;
 
     private bool _isWalking;
     private float _dyingSeconds = 5f;
@@ -20,12 +21,15 @@ public class Unit : MonoBehaviour
     private void Update()
     {
         if (_isWalking)
+        {
+            transform.forward = _target.transform.position - transform.position;
             transform.Translate(_speed * Time.deltaTime * transform.forward, Space.World);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.TryGetComponent(out Wall wall))
+        if (collision.collider.TryGetComponent(out Wall wall) || collision.collider.TryGetComponent(out Target target))
             StartCoroutine(Die());
     }
 
@@ -41,5 +45,10 @@ public class Unit : MonoBehaviour
 
         yield return dyingSeconds;
         Destroy(gameObject);
+    }
+
+    public void SetTarget(Target target)
+    {
+        _target = target;
     }
 }
